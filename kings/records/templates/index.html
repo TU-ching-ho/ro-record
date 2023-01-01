@@ -1,0 +1,27 @@
+<h1>record</h1>
+
+
+<table border="1">
+    <thead>
+        <tr>
+            <th>kings</th>
+            <th>times</th>
+            <th>fix</th>
+        </tr>
+    </thead>
+    {% for x in record %}
+    <tbody>
+        <tr>
+            <td>{{x.kings}}</td>
+            <td>{{x.times}}</td>
+            <td><a href="update/{{ x.id }}">修改</a></td>
+        </tr>
+    </tbody>
+    {% endfor %}
+</table>
+
+
+<p>
+    <a href="add/">Add member</a><br>
+
+</p>
