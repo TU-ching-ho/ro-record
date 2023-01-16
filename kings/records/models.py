@@ -4,5 +4,5 @@ from django.db import models
 
 
 class records(models.Model):
-    kings = models.CharField(max_length=100)
-    times = models.IntegerField(blank=True, null=True)
+    kings = models.CharField(max_length=100, blank=False)
+    times = models.IntegerField(blank=False, null=False)

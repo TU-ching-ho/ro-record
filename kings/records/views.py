@@ -1,12 +1,19 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import records
+from .forms import Createrecord
 # Create your views here.
 
 
 def index(request):
-    record = records.objects.all().values()
-    return render(request, 'index.html', {"record": record})
+    record = records.objects.all()
+    form = Createrecord()
+    if request.method == "POST":
+        form = Createrecord(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect("/#")
+    return render(request, 'index.html', {"record": record, "form": form})
 
 
 def update(request, id):
@@ -34,3 +41,9 @@ def addrecord(request):  # 新增
     members = records(kings=x, times=y)
     members.save()
     return redirect('index')
+
+
+def delete(request, id):
+    record = records.objects.get(id=id)
+    record.delete()
+    return redirect('/')
