@@ -1,17 +1,30 @@
-<h1>record</h1>
+<!DOCTYPE html>
+<html lang="en">
 
-{% load crispy_forms_tags %}
-<form action="" method="post">
-    {% csrf_token %}
-    {{form|crispy}}
-    <input type="submit" value="儲存">
-</form>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.2.0/echarts.min.js"></script>
+    <title>Document</title>
+</head>
 
 <body>
+    <h1>record</h1>
+    {% load static %}
+    {% load crispy_forms_tags %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form|crispy}}
+        <input type="submit" value="儲存">
+    </form>
+
+
     <table border="1">
         <thead>
             <tr>
-                <th>id</th>
+
                 <th>kings</th>
                 <th>times</th>
                 <th>fix</th>
@@ -20,9 +33,9 @@
         {% for x in record %}
         <tbody>
             <tr>
-                <td><span>{{x.id}}</span></td>
+
                 <td>{{x.kings}}</td>
-                <td>{{x.times}}</td>
+                <td style="text-align: center;">{{x.times}}</td>
                 <td>
                     <a href="update/{{ x.id }}">修改</a>
                     <a href="delete/{{ x.id }}">刪除</a>
@@ -31,7 +44,12 @@
         </tbody>
         {% endfor %}
     </table>
+
+    <div id="chart" style="width: 600px;height:400px;"></div>
+    <script src="static/chart.js"></script>
 </body>
+
+</html>
 <!--
     <p>
         <a href="add/">Add member</a><br>

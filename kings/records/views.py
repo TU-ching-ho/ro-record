@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from .models import records
 from .forms import Createrecord
+from django.http import JsonResponse
 # Create your views here.
 
 
@@ -47,3 +48,19 @@ def delete(request, id):
     record = records.objects.get(id=id)
     record.delete()
     return redirect('/')
+
+
+def jsondata(request):
+    datas = list(records.objects.values())
+    kings = []
+    times = []
+    for i in range(len(datas)):
+        kings.append(datas[i]["kings"])
+    for x in range(len(datas)):
+        times.append(datas[x]["times"])
+    return JsonResponse({'kings': kings, 'times': times})
+    '''
+    for i in range(len(data)):
+        print(data[i]["kings"])
+    return JsonResponse(data, safe=False)
+    '''
