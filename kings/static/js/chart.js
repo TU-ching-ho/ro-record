@@ -1,5 +1,6 @@
 let chart = echarts.init(document.querySelector("#chart"))
 
+
 $(document).ready(() => {
     draw_records()
 });
@@ -16,9 +17,10 @@ function draw_records() {
             type: "GET",
             dataType: "json",
             success: (data) => {
+                console.log(data[0]);
                 chart.hideLoading();
                 records(data["kings"], data["times"])
-                console.log(data)
+
             },
             error: () => {
                 chart.hideLoading();

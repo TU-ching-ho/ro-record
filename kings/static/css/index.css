@@ -1,0 +1,45 @@
+#form1 {
+    background-color: rgb(9, 9, 109);
+    color: azure;
+    margin-right: 5px;
+}
+
+#div_id_kings {
+    margin-bottom: 10px;
+}
+
+#div_id_times {
+    margin-bottom: 10px;
+}
+
+#form2 {
+    background-color: rgb(94, 91, 91);
+    margin-right: 5px;
+}
+
+#total_times {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+#total_record {
+    font-size: 20px;
+}
+
+#update_tool {
+    font-size: 20px;
+    padding-right: 1rem;
+}
+
+#delete_tool {
+    font-size: 20px;
+}
+
+#toggle-btn:hover {
+    margin-bottom: 15px;
+    background-color: coral;
+}
+
+#toggle-btn {
+    margin-bottom: 15px;
+}

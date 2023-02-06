@@ -3,18 +3,35 @@ from django.http import HttpResponse, HttpResponseRedirect
 from .models import records
 from .forms import Createrecord
 from django.http import JsonResponse
+from django.db.models import Sum, Max, Min
 # Create your views here.
 
 
 def index(request):
     record = records.objects.all()
+    # aggregate方法計算times欄位的總次數
+    sum_times = records.objects.aggregate(Sum('times'))['times__sum']
+    max_times = records.objects.all().aggregate(Max('times'))['times__max']
+    max_objects = records.objects.filter(times=max_times)
+    max_kings_values = [obj.kings for obj in max_objects]
+    min_times = records.objects.all().aggregate(Min('times'))['times__min']
+    total = records.objects.count()  # 總共有多少紀錄
+
+    # 表單
     form = Createrecord()
     if request.method == "POST":
         form = Createrecord(request.POST)
         if form.is_valid():
             form.save()
         return redirect("/#")
-    return render(request, 'index.html', {"record": record, "form": form})
+
+    my_data = {
+        "record": record, "form": form,
+        "sum_times": sum_times, "total": total,
+        "max_times": max_times, "min_times": min_times,
+        "max_kings_values": max_kings_values,
+    }
+    return render(request, 'index.html', my_data)
 
 
 def update(request, id):
@@ -44,7 +61,7 @@ def addrecord(request):  # 新增
     return redirect('index')
 
 
-def delete(request, id):
+def delete(request, id):  # 刪除
     record = records.objects.get(id=id)
     record.delete()
     return redirect('/')
