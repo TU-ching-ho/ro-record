@@ -11,19 +11,23 @@
 </head>
 
 <body>
-    <div class="has-text-centered">
-        <h1 class="title is-1">Update member</h1>
-
-        <form action="updaterecord/{{ record.id }}" method="post">
-            {% csrf_token %}
-            kings Name:<br>
-            <input name="kings" value="{{ record.kings }}">
-            <br><br>
-            times:<br>
-            <input type="number" name="times" value="{{ record.times }}">
-            <br><br>
-            <input type="submit" value="Submit">
-        </form>
+    <form action="updaterecord/{{ record.id }}" method="post">
+        {% csrf_token %}
+        <div class="columns is-mobile is-centered">
+            <div class="column is-half">
+                <div class="field">
+                    <label class="label">Kings Name:</label>
+                    <div class="control">
+                        <input class="input" name="kings" value="{{ record.kings }}">
+                    </div>
+                    <label class="label">Times:</label>
+                    <div class="control">
+                        <input class="input" type="number" name="times" value="{{ record.times }}">
+                    </div>
+                    <button type="submit" class="button is-primary ">儲存</button>
+                </div>
+            </div>
+    </form>
     </div>
 </body>
 

@@ -8,22 +8,29 @@
     margin-bottom: 10px;
 }
 
+#id_kings {
+    text-align: center;
+}
+
 #div_id_times {
     margin-bottom: 10px;
 }
+
+#id_times {
+    text-align: center;
+}
+
 
 #form2 {
     background-color: rgb(94, 91, 91);
     margin-right: 5px;
 }
 
-#total_times {
-    font-size: 20px;
-    margin-bottom: 10px;
-}
-
+#total_times,
 #total_record {
-    font-size: 20px;
+    font-size: 30px;
+    margin: 10px;
+    padding: 10px;
 }
 
 #update_tool {
@@ -35,11 +42,16 @@
     font-size: 20px;
 }
 
-#toggle-btn:hover {
+#toggle-btn {
     margin-bottom: 15px;
-    background-color: coral;
 }
 
 #toggle-btn {
     margin-bottom: 15px;
+}
+
+#monster {
+    width: 80%;
+    font-size: 20px;
+    margin-top: 5px;
 }

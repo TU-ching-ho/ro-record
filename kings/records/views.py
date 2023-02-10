@@ -16,6 +16,7 @@ def index(request):
     max_kings_values = [obj.kings for obj in max_objects]
     min_times = records.objects.all().aggregate(Min('times'))['times__min']
     total = records.objects.count()  # 總共有多少紀錄
+    order_record = records.objects.order_by("-times")
 
     # 表單
     form = Createrecord()
@@ -30,6 +31,7 @@ def index(request):
         "sum_times": sum_times, "total": total,
         "max_times": max_times, "min_times": min_times,
         "max_kings_values": max_kings_values,
+        "order_record": order_record,
     }
     return render(request, 'index.html', my_data)
 

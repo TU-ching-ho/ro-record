@@ -17,9 +17,9 @@ function draw_records() {
             type: "GET",
             dataType: "json",
             success: (data) => {
-                console.log(data[0]);
                 chart.hideLoading();
                 records(data["kings"], data["times"])
+
 
             },
             error: () => {
@@ -30,7 +30,7 @@ function draw_records() {
     )
 };
 
-
+console.log(data);
 
 
 function records(xdata, ydata) {
@@ -61,11 +61,26 @@ function records(xdata, ydata) {
                     color: '#172b85'
                 },
 
-                name: 'ˋ次數',
+                name: 'times',
                 type: 'bar',
-                data: ydata
+                data: ydata,
+            }
+        ],
+        dataZoom: [
+            {
+                show: true,
+                realtime: true,
+                start: 0,
+                end: 50
+            },
+            {
+                type: 'inside',
+                realtime: true,
+                start: 0,
+                end: 50
             }
         ]
+
     };
     chart.setOption(option);
 }
