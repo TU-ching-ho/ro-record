@@ -30,7 +30,6 @@ function draw_records() {
     )
 };
 
-console.log(data);
 
 
 function records(xdata, ydata) {

@@ -42,8 +42,11 @@
                             {% for monster in record %}
                             <option value="{{monster.kings}}">{{monster.kings}}</option>
                             {% endfor %}
-                        </select>
-                        <input type="button" value="查詢" id="check" class="button is-primary">
+                        </select><br>
+                        <input type="button" value="查詢" id="check" class="button is-primary has-text-centered">
+                        <input type="button" value="清除" id="reset" class="button is-danger has-text-center"><br>
+                        <span class="tag" id="looking_name">Name :&nbsp;</span><br>
+                        <span class="tag" id="looking_times">times :&nbsp;</span>
                     </div>
                 </div>
             </div>
@@ -62,8 +65,8 @@
                 <tbody>
                     {% for x in record %}
                     <tr>
-                        <td>{{x.kings}}</td>
-                        <td style="text-align: center;">{{x.times}}</td>
+                        <td id="record_kings">{{x.kings}}</td>
+                        <td>{{x.times}}</td>
                         <td>
                             <a href="update/{{ x.id }}"><i class='fas fa-tools' id="update_tool"></i></a>
                             <a
@@ -88,7 +91,7 @@
                     {% for x in order_record %}
                     <tr>
                         <td>{{x.kings}}</td>
-                        <td style="text-align: center;">{{x.times}}</td>
+                        <td>{{x.times}}</td>
                         <td>
                             <a href="update/{{ x.id }}"><i class='fas fa-tools' id="update_tool"></i></a>
                             <a
