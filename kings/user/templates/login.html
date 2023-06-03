@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <title>Document</title>
+    <style>
+        .section {
+            width: 500px;
+            margin: 50px auto;
+            text-align: center;
+            padding: 15px;
+            border-radius: 20px;
+            background-color: rgb(157, 231, 231);
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="title is-1 has-text-centered">Login</h1>
+    <form action="" method="POST" class="section">
+        {% csrf_token %}
+        <div class="field">
+            <label for="username" class="label">帳號</label>
+            <div class="control">
+                <input type="text" name="username" id="username" value="{{username}}" class="input">
+            </div>
+        </div>
+        <div class="field">
+            <label for="password" class="label">密碼</label>
+            <div class="control">
+                <input type="password" name="password" id="password" class="input">
+            </div>
+        </div>
+
+        <div class="field is-grouped is-grouped-centered">
+            <div class="control">
+                <input type="submit" name="login" class="button is-success" value="登入">
+            </div>
+            <div class="control">
+                <input type="submit" name="signup" class="button is-warning" value="註冊">
+            </div>
+            <div class="control">
+                <button type="reset" class="button is-danger">清除</button>
+            </div>
+        </div>
+    </form>
+    {{message}}
+</body>
+
+</html>

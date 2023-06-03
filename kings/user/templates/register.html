@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load crispy_forms_tags %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+    <title>Document</title>
+    <style>
+        .form-container {
+            width: 500px;
+            margin: 50px auto;
+            text-align: left;
+            padding: 15px;
+            border-radius: 20px;
+            color: rgb(21, 24, 24);
+            background-color: rgb(157, 231, 231);
+        }
+    </style>
+</head>
+
+
+<body>
+    <h1 class="text-center">註冊</h1>
+    <form action="" method="POST" class="form-group">
+        {% csrf_token %}
+        <div class="form-container">
+            {{form|crispy}}
+            <button type="submit" class="btn btn-success">註冊</button>
+            <span>{{ message }}</span>
+        </div>
+
+    </form>
+</body>
+
+</html>

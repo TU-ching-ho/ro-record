@@ -10,14 +10,19 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.2.0/echarts.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    <link rel="stylesheet" href="static/css/index.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="/static/css/index.css">
+    <title>紀錄表</title>
 </head>
 
 <body>
     <section class="section">
         <div class="container">
-            <h1 class="title is-1 has-text-centered">Record</h1>
+            {% if user.is_authenticated %}
+            <h1 class="title is-1 has-text-centered">{{user.username}}'s Record</h1><br>
+            <a href="/logout">登出</a>
+            {% else %}
+            <h1 class="title is-1 has-text-centered">Record</h1><br>
+            {% endif %}
             <div class="box has-text-centered">
                 <div class="columns">
                     <div id="form1" class="column is-4">
@@ -27,7 +32,7 @@
                             {{form|crispy}}
                             <div class="field">
                                 <div class="control">
-                                    <input type="submit" value="儲存" class="button is-success" id="store">
+                                    <button type="submit" class="button is-success" id="store">儲存</button>
                                 </div>
                             </div>
                         </form>
@@ -54,6 +59,8 @@
                 <button id="toggle-btn" class="button is-info">Toggle Table</button>
                 <button id="order-btn" class="button is-info"> Order Table</button>
             </div>
+
+            <!--輸入資訊表格-->
             <table class="table is-bordered is-striped is-fullwidth has-text-centered" id="my-table">
                 <thead>
                     <tr>

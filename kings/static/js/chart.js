@@ -18,8 +18,12 @@ function draw_records() {
             dataType: "json",
             success: (data) => {
                 chart.hideLoading();
-                records(data["kings"], data["times"])
-
+                if (data && data["kings"] && data["times"]) {
+                    records(data["kings"], data["times"]);
+                } else {
+                    // 資料庫未有值的錯誤處理
+                    alert("資料庫未有值");
+                }
 
             },
             error: () => {

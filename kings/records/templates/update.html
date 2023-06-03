@@ -8,10 +8,21 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <title>Document</title>
+    <style>
+        .form-container {
+            width: 500px;
+            margin: 50px auto;
+            text-align: left;
+            padding: 15px;
+            border-radius: 20px;
+            color: rgb(21, 24, 24);
+            background-color: rgb(157, 231, 231);
+        }
+    </style>
 </head>
 
 <body>
-    <form action="updaterecord/{{ record.id }}" method="post">
+    <form action="updaterecord/{{ record.id }}" method="post" class="form-container">
         {% csrf_token %}
         <div class="columns is-mobile is-centered">
             <div class="column is-half">
